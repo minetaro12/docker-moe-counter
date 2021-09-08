@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  moe-counter:
+    build: .
+    restart: always
+    working_dir: /counter
+    ports:
+      - "8000:3000"
+    environment: 
+      - DB_URL=mongodb+srv://User:PW@host/counter
+    volumes:
+      - ./count.db:/counter/count.db
+      - ./config.yml:/counter/config.yml
