@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 
-RUN apk add -t build-deps --no-cache git gcc make musl-dev && \
+RUN apk add -t build-deps --no-cache git gcc g++ make musl-dev && \
     apk add --no-cache python2 && \
     git clone https://github.com/journey-ad/Moe-counter -b master counter && \
     cd /counter && \
