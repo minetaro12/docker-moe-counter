@@ -1,15 +1,12 @@
 FROM node:lts-alpine
 
-#必要なパッケージをインストール
-RUN apk add --no-cache git python2 make
-
-#リポジトリのクローン
-RUN git clone https://github.com/journey-ad/Moe-counter -b master counter
-
-#依存関係のインストール
-RUN cd /counter && \
+RUN apk add -t build-deps --no-cache git gcc && \
+    apk add --no-cache python2 && \
+    git clone https://github.com/journey-ad/Moe-counter -b master counter && \
+    cd /counter && \
     yarn install && \
     yarn cache clean && \
-    rm -rf /root/.npm
+    rm -rf /root/.npm && \
+    apk del build-deps
 
 CMD /usr/local/bin/yarn start
