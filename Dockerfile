@@ -1,7 +1,7 @@
 FROM node:lts-alpine
 
 #必要なパッケージをインストール
-RUN apk add --no-cache git python2
+RUN apk add --no-cache git python2 make
 
 #リポジトリのクローン
 RUN git clone https://github.com/journey-ad/Moe-counter -b master counter
